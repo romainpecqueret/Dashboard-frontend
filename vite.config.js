@@ -1,8 +1,15 @@
 // vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
 export default defineConfig({
+  plugins: [react()],
   server: {
     proxy: {
-      '/api': 'https://fastapi-dashboard-eay4.onrender.com',
+      '/api': {
+        target: 'https://fastapi-dashboard-eay4.onrender.com',
+        changeOrigin: true,
+      },
     },
   },
 });
